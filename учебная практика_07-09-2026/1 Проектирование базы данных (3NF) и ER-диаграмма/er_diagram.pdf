@@ -1,0 +1,115 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 842 595] /Resources << /Font << /F1 5 0 R /F2 6 0 R >> >> /Contents 4 0 R >>
+endobj
+4 0 obj
+<< /Length 2737 >>
+stream
+BT /F1 16 Tf 40 555 Td (ER Diagram \(logical model, 3NF\): partners / products / shipments) Tj ET
+BT /F1 9 Tf 40 537 Td (PK - primary key    FK - foreign key    UK - unique constraint    NN - NOT NULL) Tj ET
+1.2 w
+0 0 0 RG
+60 387 250 118 re S
+0.85 g
+60 483 250 22 re B
+0 g
+BT /F1 12 Tf 70 490 Td (partners) Tj ET
+0.6 w
+60 483 m 310 483 l S
+BT /F2 8 Tf 68 471 Td (PK) Tj ET
+BT /F1 9.5 Tf 94 471 Td (partner_id) Tj ET
+BT /F2 8.5 Tf 210 471 Td (integer) Tj ET
+BT /F2 8 Tf 68 455 Td (NN) Tj ET
+BT /F1 9.5 Tf 94 455 Td (company_name) Tj ET
+BT /F2 8.5 Tf 210 455 Td (varchar\(255\)) Tj ET
+BT /F2 8 Tf 68 439 Td (UK NN) Tj ET
+BT /F1 9.5 Tf 94 439 Td (inn) Tj ET
+BT /F2 8.5 Tf 210 439 Td (varchar\(12\)) Tj ET
+BT /F2 8 Tf 68 423 Td (UK) Tj ET
+BT /F1 9.5 Tf 94 423 Td (contact_email) Tj ET
+BT /F2 8.5 Tf 210 423 Td (varchar\(255\)) Tj ET
+BT /F1 9.5 Tf 94 407 Td (phone) Tj ET
+BT /F2 8.5 Tf 210 407 Td (varchar\(20\)) Tj ET
+BT /F1 9.5 Tf 94 391 Td (rating) Tj ET
+BT /F2 8.5 Tf 210 391 Td (decimal\(2,1\)) Tj ET
+1.2 w
+0 0 0 RG
+560 451 230 54 re S
+0.85 g
+560 483 230 22 re B
+0 g
+BT /F1 12 Tf 570 490 Td (products) Tj ET
+0.6 w
+560 483 m 790 483 l S
+BT /F2 8 Tf 568 471 Td (PK) Tj ET
+BT /F1 9.5 Tf 594 471 Td (product_id) Tj ET
+BT /F2 8.5 Tf 710 471 Td (integer) Tj ET
+BT /F2 8 Tf 568 455 Td (UK NN) Tj ET
+BT /F1 9.5 Tf 594 455 Td (product_name) Tj ET
+BT /F2 8.5 Tf 710 455 Td (varchar\(255\)) Tj ET
+1.2 w
+0 0 0 RG
+300 157 260 118 re S
+0.85 g
+300 253 260 22 re B
+0 g
+BT /F1 12 Tf 310 260 Td (shipments) Tj ET
+0.6 w
+300 253 m 560 253 l S
+BT /F2 8 Tf 308 241 Td (PK) Tj ET
+BT /F1 9.5 Tf 334 241 Td (sale_id) Tj ET
+BT /F2 8.5 Tf 450 241 Td (integer) Tj ET
+BT /F2 8 Tf 308 225 Td (FK NN) Tj ET
+BT /F1 9.5 Tf 334 225 Td (partner_id) Tj ET
+BT /F2 8.5 Tf 450 225 Td (integer) Tj ET
+BT /F2 8 Tf 308 209 Td (FK NN) Tj ET
+BT /F1 9.5 Tf 334 209 Td (product_id) Tj ET
+BT /F2 8.5 Tf 450 209 Td (integer) Tj ET
+BT /F2 8 Tf 308 193 Td (NN) Tj ET
+BT /F1 9.5 Tf 334 193 Td (sale_date) Tj ET
+BT /F2 8.5 Tf 450 193 Td (date) Tj ET
+BT /F2 8 Tf 308 177 Td (NN) Tj ET
+BT /F1 9.5 Tf 334 177 Td (quantity) Tj ET
+BT /F2 8.5 Tf 450 177 Td (integer) Tj ET
+BT /F2 8 Tf 308 161 Td (NN) Tj ET
+BT /F1 9.5 Tf 334 161 Td (total_amount) Tj ET
+BT /F2 8.5 Tf 450 161 Td (decimal\(12,2\)) Tj ET
+0.8 w
+0 0 0 RG
+310 427 m 300 245 l S
+BT /F1 10 Tf 314 433 Td (1) Tj ET
+BT /F1 10 Tf 286 251 Td (N) Tj ET
+BT /F2 8.5 Tf 275.0 342.0 Td (partner places shipment) Tj ET
+560 471 m 560 245 l S
+BT /F1 10 Tf 546 477 Td (1) Tj ET
+BT /F1 10 Tf 564 251 Td (N) Tj ET
+BT /F2 8.5 Tf 540.0 364.0 Td (product appears in shipment) Tj ET
+BT /F2 8.5 Tf 40 40 Td (FK shipments.partner_id -> partners.partner_id \(ON DELETE RESTRICT\);  FK shipments.product_id -> products.product_id \(ON DELETE RESTRICT\)) Tj ET
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+6 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+xref
+0 7
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000251 00000 n 
+0000003040 00000 n 
+0000003142 00000 n 
+trailer
+<< /Size 7 /Root 1 0 R >>
+startxref
+3239
+%%EOF
