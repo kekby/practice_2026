@@ -1,0 +1,7 @@
+{
+  "name": "partner-discount-db",
+  "private": true,
+  "dependencies": {
+    "pg": "^8.23.0"
+  }
+}
