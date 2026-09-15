@@ -1,0 +1,7 @@
+{
+  "name": "partner-discount-ui",
+  "private": true,
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
