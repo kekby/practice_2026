@@ -9,8 +9,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/resources', express.static(path.join(__dirname, 'resources')));
 
 app.get('/api/partners', async (req, res) => {
-  const partners = await getAllPartnersWithDiscount(pool);
-  res.json(partners);
+  try {
+    const partners = await getAllPartnersWithDiscount(pool);
+    res.json(partners);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'не удалось получить список партнёров' });
+  }
 });
 
 const port = process.env.PORT || 3000;

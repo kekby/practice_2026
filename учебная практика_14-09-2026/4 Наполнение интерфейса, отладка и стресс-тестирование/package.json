@@ -1,5 +1,5 @@
 {
-  "name": "partner-discount-ui",
+  "name": "partner-discount-final",
   "private": true,
   "dependencies": {
     "express": "^4.21.2"
