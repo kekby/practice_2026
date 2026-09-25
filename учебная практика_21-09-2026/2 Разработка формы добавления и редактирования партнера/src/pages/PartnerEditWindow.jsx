@@ -17,6 +17,8 @@ function PartnerEditWindow() {
     phone: '',
     email: '',
   })
+  const [isDirty, setIsDirty] = useState(false)
+  const [submitError, setSubmitError] = useState(null)
 
   useEffect(() => {
     document.title = isEditMode
@@ -24,20 +26,60 @@ function PartnerEditWindow() {
       : 'CRM: Карточка партнера [Добавление]'
   }, [isEditMode])
 
+  // предупреждаем о потере несохранённых изменений при закрытии/обновлении вкладки
+  useEffect(() => {
+    function handleBeforeUnload(event) {
+      if (!isDirty) return
+      event.preventDefault()
+    }
+    window.addEventListener('beforeunload', handleBeforeUnload)
+    return () => window.removeEventListener('beforeunload', handleBeforeUnload)
+  }, [isDirty])
+
   function handleChange(event) {
     const { name, value } = event.target
     setForm((prev) => ({ ...prev, [name]: value }))
+    setIsDirty(true)
+  }
+
+  function handleBack() {
+    // та же защита, что и beforeunload, но для перехода внутри приложения — его beforeunload не ловит
+    if (isDirty && !window.confirm('Изменения не сохранены. Всё равно вернуться назад?')) {
+      return
+    }
+    navigate('/')
+  }
+
+  async function handleSubmit(event) {
+    event.preventDefault()
+    setSubmitError(null)
+    try {
+      const url = isEditMode ? `/api/partners/${id}` : '/api/partners'
+      const method = isEditMode ? 'PUT' : 'POST'
+      const response = await fetch(url, {
+        method,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      })
+      if (!response.ok) {
+        throw new Error(`сервер ответил ${response.status}`)
+      }
+      setIsDirty(false)
+      navigate('/')
+    } catch {
+      setSubmitError('Не удалось отправить данные партнёра')
+    }
   }
 
   return (
     <>
       <header className="app-header">
         <h1>{isEditMode ? 'Карточка партнера' : 'Новый партнер'}</h1>
-        <button type="button" className="btn" onClick={() => navigate('/')}>
+        <button type="button" className="btn" onClick={handleBack}>
           Назад
         </button>
       </header>
-      <div className="edit-form">
+      <form className="edit-form" onSubmit={handleSubmit}>
         <label>
           Наименование
           <input
@@ -111,7 +153,11 @@ function PartnerEditWindow() {
             title="Формат: name@example.com"
           />
         </label>
-      </div>
+        {submitError && <p className="error-message">{submitError}</p>}
+        <button type="submit" className="btn">
+          Сохранить
+        </button>
+      </form>
     </>
   )
 }
